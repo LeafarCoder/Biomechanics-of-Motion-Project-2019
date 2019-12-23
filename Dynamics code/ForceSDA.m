@@ -4,7 +4,7 @@ global SpringDamper NSpringDampers
 
 %for each spring damper actuator
 
-for e=1:NSpringDamper
+for e=1:NSpringDampers
     i = SpringDamper(e).i;
     j = SpringDamper(e).j;
     spi = SpringDamper(e).spi;
