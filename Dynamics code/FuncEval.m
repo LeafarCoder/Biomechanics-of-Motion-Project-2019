@@ -2,14 +2,13 @@ function [yd] = FuncEval(t, y)
 %Function to evaluate yd as required by the time integration (ode45)
 
 %access the global memory
-global
+global NBody Body
 
 %transfer positions and velocities to body analysis
-[Body,q,qd]=y2q(y,Body,NBodies);
-
+[q,qd] = y2q(y);
 
 %Build the mass matrix
-[M] = BuildMassMatrix(Body,NBodies);
+[M] = BuildMassMatrix();
 
 %Build Jacobian Matrix and gamma
 [~,Jac,~,gamma] = Kinem_FuncEval(q,qd,time);
@@ -17,11 +16,9 @@ global
 %Build the force vector
 [g]=BuildForceVector();
 
-
 %Build loading matrix and r.h.s. vector
-
-Null=zeros(NConstraints,NConstraints);
-[Mat]=[M Jac'; Jac Null];
+zeroMat = zeros(NConstraints, NConstraints);
+[Mat]=[M Jac'; Jac zeroMat];
 
 b=[g;gamma];
 

@@ -1,9 +1,7 @@
 function [g] = BuildForceVector()
 
-global
-
 %add the gravitational forces
-[g] = Forcegravity();
+[g] = ForceGravity();
 
 %add the spring-damper-actuator forces
 [g] = ForceSDA(g);
