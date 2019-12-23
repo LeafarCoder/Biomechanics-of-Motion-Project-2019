@@ -5,7 +5,7 @@ q = y(1:NCoordinates,1);
 qd = y(NCoordinates+1:end,1);
 
 % Update the body information
-for i=1:NBodies
+for i = 1:NBodies
     i1 = 3*i-2;
     i2 = i1+1;
     i3 = i2+1;

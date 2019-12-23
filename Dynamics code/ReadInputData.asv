@@ -7,12 +7,16 @@ function ReadModelInput(ModelName)
 global NBody NRevolute NGround NDriver
 global JntRevolute Body Ground Driver
 
-% Read the input file
-file = fopen(ModelName, 'r');
+%load input file name
+[FileName, PathName] = uigetfile('*.txt','Select the dynamic model file');
+
+
+
+%Read the input file
+H = dlmread(FileName)
 
 %store the general dimensions of system
-t_line = fgetl(file);
-H = sscanf(t_line, "%i");
+
 NBody = H(1,1);
 NRevolute = H(1,2);
 NGround = H(1,3);
@@ -23,6 +27,7 @@ NSpringDamper = H(1,7);
 
 NConst = 2*NRevolute+3*NGround+NDriver
 line=1;
+
 
 %store data for the rigid body information
 
