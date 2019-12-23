@@ -1,6 +1,6 @@
 %Function to evaluate yd as required by the time integration (ode45)
 
-Function[yd]=FuncEval(t,y);
+function[yd]=FuncEval(t,y)
 
 %access the global memory
 
@@ -53,3 +53,4 @@ yd=[qd;qdd];
 %Store information for report
 [Body]=qdd2Body(qdd,Body,lambda,NBody);
 
+end
