@@ -1,4 +1,4 @@
-function [g] = Forcegravity()
+function [g] = ForceGravity()
 
 global Body NBodies grav NCoordinates
 

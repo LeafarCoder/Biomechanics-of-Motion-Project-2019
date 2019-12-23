@@ -1,12 +1,10 @@
 function [Body,q,qd] = y2q(y,Body,NBodies)
 
-global
-
-%create vectors q and qd
+% Create vectors q and qd
 q = y(1:NCoordinates,1);
 qd = y(NCoordinates+1:end,1);
 
-%update the body information
+% Update the body information
 for i=1:NBodies
     i1 = 3*i-2;
     i2 = i1+1;
