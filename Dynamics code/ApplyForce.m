@@ -1,5 +1,5 @@
 function [g] = ApplyForce(i,g,force,sp)
-
+% este é o Rafa branch
 i1 = 3*i-2;
 i2 = i1 + 1;
 i3 = i2 + 1;
