@@ -1,4 +1,4 @@
-function ReadGRF(SamplingFrequency)
+function ReadGRF(force_file, samplingFreq)
 %Reads and filters the data from the force plates
 
 global FPlate
@@ -8,10 +8,10 @@ global FPlate
 % the forces in x, y, and z and the position of the center of pressure in
 % x, y, z
 
-[fp1, fp2, fp3] = tsv2mat(0, 0, 0);
+[fp1, fp2, fp3] = tsv2mat(force_file);
 
 % time frame
-Time = 0: 1/SamplingFrequency : (size(fp1,1)-1)/SamplingFrequency;
+Time = 0: 1/samplingFreq : (size(fp1,1)-1)/samplingFreq;
 
 %saves the data into a structure
 RawData(1).fp = fp1;
@@ -27,11 +27,10 @@ for i = 1:3
                 .* [1, 1, 1e-3, 1e-3];
         
      %filters the data
-     FilteredData = FilterForcePlateData(FPData, SamplingFrequency);
+     FilteredData = FilterForcePlateData(FPData, samplingFreq);
      
      %saves data in an output structure
      FPlate(i).Data = [Time', FilteredData'];
-     
 end
 
 end

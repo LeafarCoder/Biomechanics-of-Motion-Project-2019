@@ -47,21 +47,21 @@ motion_option = 1;
 analysis_names = {'Gait', 'Deadlift'};
 analysis_name = analysis_names{motion_option};
 
-cf = pwd;   % Current folder
-biomechanical_model_input_file = [cf, '\HumanBiomechanicalModel.txt'];
-biomechanical_model_save_file = [cf, '\BiomechanicalModel.txt'];
+c
+biomechanical_model_input_file = 'HumanBiomechanicalModel.txt';
+biomechanical_model_save_file = 'BiomechanicalModel.txt';
 
-static_file = [cf, '\LabData\static.tsv'];
+static_file = 'LabData/static.tsv';
 static_remove_var = 2; % remove Y (project onto XZ plane)
 
-motion_files = {[cf, '\LabData\gait.tsv'], [cf, '\LabData\deadlift.tsv']};
+motion_files = {'LabData/gait.tsv', 'LabData/deadlift.tsv'};
 motion_file = motion_files{motion_option};
 remove_vars = {2, 1};
 motion_remove_var = remove_vars{motion_option};
 
 % Only the first force file (f1) needs to be uploaded, all others will be
 % deduced from the name (for that the file names must be consistent)
-force_files = {[cf, '\LabData\gait_f1.tsv'], [cf, '\LabData\deadlift_f1.tsv']};
+force_files = {'LabData/gait_f1.tsv', 'LabData/deadlift_f1.tsv'};
 force_file = force_files{motion_option};
 
 subjectMass = 68;   % Mass of the subject in Kg

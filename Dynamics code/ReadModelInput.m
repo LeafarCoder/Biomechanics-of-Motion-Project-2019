@@ -6,6 +6,7 @@ function ReadModelInput(ModelName)
 % Global memory assignment
 global NBody NRevolute NGround NDriver NFPlate NConstraints NCoordinates
 global JntRevolute Body Ground Driver FPlate
+global totalMass
 
 % Read the input file
 file = fopen(ModelName, 'r');

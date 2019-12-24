@@ -1,7 +1,8 @@
 function PreProcessing( biomechanical_model_file,...
                         biomechanical_model_save_file,...
                         static_file, static_remove_method, static_remove_var, ...
-                        motion_file, motion_remove_method, motion_remove_var)
+                        motion_file, motion_remove_method, motion_remove_var, ...
+                        force_file, subjectMass)
 % Pre-processing of data from the Laboratory of Biomechanics of Lisbon
 % The PreProcessing function requires:
 % - A Biomechanical Model input file from where to read the model
@@ -11,6 +12,7 @@ function PreProcessing( biomechanical_model_file,...
 %   - The file name
 %   - The method of projection to the sagital plane
 %   - The variable (dummy or not) to remove (only useful for method='var')
+% - The subject mass for the inertial calculations
 
 % Global memory data
 global removeVar
@@ -36,7 +38,7 @@ ComputeAverageLengths(StaticData);
 %Compute the total body mass from ground reaction forces and update the
 %mass and inertia of the bodies
 waitbar(0.5, progress_bar, 'Compute body masses and inertia moments...');
-ComputeBodyInertialProperties(totalMass);
+ComputeBodyInertialProperties(subjectMass);
 
 % Reads data
 % Remove coordinate 'motion_remove': 1-X, 2-Y, 3-Z
@@ -52,8 +54,8 @@ waitbar(0.9, progress_bar, 'Evaluating drivers...');
 EvaluateDrivers(GaitData);
 
 %Process the ground reaction forces
-waitbar(0.95, progress_bar, 'Processing the groun reaction forces...');
-ReadGRF(GaitData.Frequency);
+waitbar(0.95, progress_bar, 'Processing the ground reaction forces...');
+ReadGRF(force_file, GaitData.Frequency);
 
 % Updates the data in the files to be read by the kinematic analysis
 waitbar(1, progress_bar, 'Saving Biomechanical Model...');
