@@ -161,7 +161,6 @@ if(strcmp(remove_method, 'pca'))
 elseif(strcmp(remove_method, 'var'))
     % Eliminates the coordinates to project the data onto the sagital plane
     Coordinates(:, remove_var:3:end) = [];
-    size(Coordinates)
 end
 
 %% Filters the data
