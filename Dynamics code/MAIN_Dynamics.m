@@ -47,10 +47,10 @@ motion_option = 1;
 biomechanical_model_input_file = 'HumanBiomechanicalModel.txt';
 biomechanical_model_save_file = 'BiomechanicalModel.txt';
 
-static_file = 'static.tsv';
+static_file = 'LabData\static.tsv';
 static_remove_var = 2; % remove Y (project onto XZ plane)
 
-motion_files = {'gait.tsv', 'deadlift.tsv'};
+motion_files = {'LabData\gait.tsv', 'LabData\deadlift.tsv'};
 motion_file = motion_files{motion_option};
 remove_vars = {2, 1};
 motion_remove_var = remove_vars{motion_option};
