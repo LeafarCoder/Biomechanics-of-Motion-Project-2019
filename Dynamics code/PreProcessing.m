@@ -25,12 +25,12 @@ progress_bar = waitbar(0,'Reading Human Model Input...');
 % Reads input data for the biochanical model
 ReadModelInput(biomechanical_model_file);
 
-waitbar(0.2, progress_bar, 'Reading and filtering the static data...');
 % Reads the static data (remove coordinate 'static_remove': 1-X, 2-Y, 3-Z)
+waitbar(0.2, progress_bar, 'Reading and filtering the static data...');
 StaticData = ReadProcessData(static_file, static_remove_method, static_remove_var);
 
-waitbar(0.4, progress_bar, 'Computing body lengths from the static data...');
 %Compute the average segment lengths
+waitbar(0.4, progress_bar, 'Computing body lengths from the static data...');
 ComputeAverageLengths(StaticData);
 
 %Compute the total body mass from ground reaction forces and update the

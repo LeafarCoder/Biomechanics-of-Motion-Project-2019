@@ -1,15 +1,17 @@
-function ProcessedData = FilterForcePlateData(ProcessedData, SamplinfFrequency)
-%considering only the vertical component of the force, estimate the instant
+function ProcessedData = FilterForcePlateData(ProcessedData, SamplingFrequency)
+%Considering only the vertical component of the force, estimate the instant
 %of time in which contact existed by finding the time steps for which the
-%force was larger than 5N
-ContactTimeSteps = find(ProcessedData(:,2)>5);
-ContactIndices = (ProcessedData(:,2)>5);
+%force was larger than a certain threshold
+
+force_threshold = 5;
+
+ContactTimeSteps = find(ProcessedData(:,2) > force_threshold);
+ContactIndices = (ProcessedData(:,2) > force_threshold);
 
 %filters the forces
-for j=1:2
+for j = 1:2
     %low-pass filter with cut-off frequency of 20Hz
-    FilteredData = DoublePassLPFilter(ProcessedData(:,j),...
-        20, SamplingFrequency);
+    FilteredData = DoublePassLPFilter(ProcessedData(:,j), 20, SamplingFrequency);
     
     %the instants of time for which no contact existed will be assigned a
     %0N force
@@ -21,7 +23,7 @@ end
 
 %filters the center of pressure
 
-for j=3:4
+for j = 3:4
     %before filtering, the position of the center of pressure imediately
     %before and after contact will be put at those positions to diminish
     %the impact of the filter adaptation
@@ -42,12 +44,7 @@ for j=3:4
     FilteredData = DoublePassLPFilter(RawCoP, 10, SamplingFrequency);
     
     %update the output
-    ProcessedData(:,j) = FilteredData;
-    
-    %plots results
-    % plot(RawCoP);hold on; plot(FilteredData,'r');hold off;´
-    % pause
+    ProcessedData(:,j) = FilteredData; 
 end
-    
 
 end

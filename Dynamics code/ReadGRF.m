@@ -19,14 +19,15 @@ RawData(2).fp = fp2;
 RawData(3).fp = fp3;
 
 %goes through all force plates and processes results
-for i=1:3
+for i = 1:3
     %saves only the data relevant for 2D analysis - the data eliminated
     %from the positions is eliminated here as well
-    FPData = [RawData(i).fp(:,1), RawData(i).fp(:,3),...
-            RawData(i).fp(:,4)*1e-3,RawData(i).fp(:,6)*1e-3];
+    FPData = [  RawData(i).fp(:,1), RawData(i).fp(:,3),...
+                RawData(i).fp(:,4), RawData(i).fp(:,6)]...
+                .* [1, 1, 1e-3, 1e-3];
         
      %filters the data
-     Filtereddata = FilterForcePlateData(FPData, SamplingFrequency);
+     FilteredData = FilterForcePlateData(FPData, SamplingFrequency);
      
      %saves data in an output structure
      FPlate(i).Data = [Time', FilteredData'];
