@@ -21,12 +21,14 @@ for i = 1:n_fp
     fid = fopen(force_file);
     % Get two first header data: # of samples and sampling frequency
     header_scan = textscan(fid, '%s %f', 2);
+    header.label = header_scan{1};
     header.value = header_scan{2};
-    sampleNum = header.value(1);
+    
     
     % Get remaining headers for definition of force plate positions
     header_scan2 = textscan(fid,'%s %f', 14, 'headerLines',8);
     
+    header.label2 = header_scan2{1};
     header.value2 = header_scan2{2};
     
     fpdata{i}.XY.x = header.value2(1,1);
@@ -58,9 +60,9 @@ for i = 1:n_fp
     fclose(fid);
 end
 
-fp1_f_tr = zeros(sampleNum,9);
-fp2_f_tr = zeros(sampleNum,9);
-fp3_f_tr = zeros(sampleNum,9);
+fp1_f_tr = zeros(header.value(1),9);
+fp2_f_tr = zeros(header.value(1),9);
+fp3_f_tr = zeros(header.value(1),9);
 
 for i = 1:9
     fp1_f_tr(:,i) = pontos_aux{1,1}{:,i+2};
@@ -84,9 +86,9 @@ COP3_z(:,1) = fp3_f_tr(:,9) + fpdata{1,3}.xy.z;
 
 %% Relations
 
-fp1 = zeros(sampleNum,6);
-fp2 = zeros(sampleNum,6);
-fp3 = zeros(sampleNum,6);
+fp1 = zeros(header.value(1),6);
+fp2 = zeros(header.value(1),6);
+fp3 = zeros(header.value(1),6);
 
 
 fp1(:,1) = -fp1_f_tr(:,2);
