@@ -35,12 +35,14 @@ for k = 1:NBody
     updateProgressBar(num_progress_iter, total_progress_iter, 'Body', k);
     
     t_line = fgetl(file);
-    H = sscanf(t_line, "%i %f %f %f %f %f");
-    Body(k).r = H(2:3);
-    Body(k).theta = H(4);
-    Body(k).Length = H(5);
-    Body(k).PCoM = H(6);
-    Body(k).Name = char(sscanf(t_line, "%*i %*f %*f %*f %*f %*f %s"))';
+    H = sscanf(t_line, "%i %f %f %f %f %f %f %f");
+    Body(k).mass = H(2);
+    Body(k).J = H(3);
+    Body(k).r = H(4:5);
+    Body(k).theta = H(6);
+    Body(k).Length = H(7);
+    Body(k).PCoM = H(8);
+    Body(k).Name = char(sscanf(t_line, "%*i %*f %*f %*f %*f %*f %*f %*f %s"))';
 end
 
 % Store the Revolute Joint Information
@@ -90,6 +92,24 @@ for k = 1:NDriver
         Driver(k).spline_d = spl_d;
         Driver(k).spline_dd = spl_dd;
     end
+    
+end
+
+for k = 1:NFPlate
+        
+    t_line = fgetl(file);
+    H = sscanf(t_line, "%i %i %i %f %f %f %f");
+    FPlate(k).i = H(2);
+    FPlate(k).j = H(3);
+    FPlate(k).spi = H(4:5);
+    FPlate(k).spj = H(6:7);
+    
+    filename = sprintf('Driver_%d.txt', Driver(k).filename);
+    driver_info = dlmread(filename);
+    
+        [spl, spl_d, spl_dd] = DriverGetSplines(driver_info);
+        Driver(k).spline = spl;
+    
     
 end
 

@@ -9,7 +9,7 @@ global NGround Ground;
 global NDriver Driver;
 global tstart tstep tend;
 global removeVar read_progress;
-global NFPlate;
+global NFPlate FPlate; 
 
 % Read input file
 waitbar(0, read_progress, {'Reading Biomechanical Model input file...','Opening input file'});
@@ -35,12 +35,14 @@ for k = 1:NBody
     updateProgressBar(num_progress_iter, total_progress_iter, 'Body', k);
     
     t_line = fgetl(file);
-    H = sscanf(t_line, "%i %f %f %f %f %f");
-    Body(k).r = H(2:3);
-    Body(k).theta = H(4);
-    Body(k).Length = H(5);
-    Body(k).PCoM = H(6);
-    Body(k).Name = char(sscanf(t_line, "%*i %*f %*f %*f %*f %*f %s"))';
+    H = sscanf(t_line, "%i %f %f %f %f %f %f %f");
+    Body(k).mass = H(2);
+    Body(k).J = H(3);
+    Body(k).r = H(4:5);
+    Body(k).theta = H(6);
+    Body(k).Length = H(7);
+    Body(k).PCoM = H(8);
+    Body(k).Name = char(sscanf(t_line, "%*i %*f %*f %*f %*f %*f %*f %*f %s"))';
 end
 
 % Store the Revolute Joint Information
@@ -90,6 +92,28 @@ for k = 1:NDriver
         Driver(k).spline_d = spl_d;
         Driver(k).spline_dd = spl_dd;
     end
+    
+end
+
+for k = 1:NFPlate
+        
+    t_line = fgetl(file);
+    H = sscanf(t_line, "%i %i %i %f %f %f %f %i");
+    FPlate(k).i = H(2);
+    FPlate(k).j = H(3);
+    FPlate(k).spi = H(4:5);
+    FPlate(k).spj = H(6:7);
+    FPlate(k).filename = H(8);
+    
+    filename = sprintf('FPlates_%d.txt', FPlate(k).filename);
+    FPlate_info = dlmread(filename);
+    
+%     if(Driver(k).type == 1 || Driver(k).type == 3)
+%         [spl, spl_d, spl_dd] = DriverGetSplines(driver_info);
+%         Driver(k).spline = spl;
+%         Driver(k).spline_d = spl_d;
+%         Driver(k).spline_dd = spl_dd;
+%     end
     
 end
 
