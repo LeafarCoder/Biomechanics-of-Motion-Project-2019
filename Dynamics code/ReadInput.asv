@@ -9,7 +9,7 @@ global NGround Ground;
 global NDriver Driver;
 global tstart tstep tend;
 global removeVar read_progress;
-global NFPlate;
+global NFPlate FPlate; 
 
 % Read input file
 waitbar(0, read_progress, {'Reading Biomechanical Model input file...','Opening input file'});
@@ -98,19 +98,25 @@ end
 for k = 1:NFPlate
         
     t_line = fgetl(file);
-    H = sscanf(t_line, "%i %i %i %f %f %f %f");
+    H = sscanf(t_line, "%i %i %i %f %f %f %f %i");
     FPlate(k).i = H(2);
     FPlate(k).j = H(3);
     FPlate(k).spi = H(4:5);
     FPlate(k).spj = H(6:7);
+    FPlate(k).filename = H(8);
     
-    filename = sprintf('Driver_%d.txt', Driver(k).filename);
-    driver_info = dlmread(filename);
+    filename = sprintf('FPlates_%d.txt', FPlate(k).filename);
+    FPlate_info = dlmread(filename);
     
-        [spl, spl_d, spl_dd] = DriverGetSplines(driver_info);
-        Driver(k).spline = spl;
+    %getting splines for forces and centers of pressure
+    %Build forceplateDriverGetSplines
+    [Fxy_spl, Fz_spl, COPxy_spl ,COPz_spl]   = FPlateGetSplines(FPlate_info);
     
-    
+    FPlate(k).Fxy_spline   = spline(t,dof);
+    FPlate(k).Fz_spline    = Fz_spl;
+    FPlate(k).COPxy_spline = COPxy_spl;
+    FPlate(k).COPz_spline  = COPz_spl;
+        
 end
 
 % Read the Analysis Time

@@ -108,13 +108,13 @@ for k = 1:NFPlate
     filename = sprintf('FPlates_%d.txt', FPlate(k).filename);
     FPlate_info = dlmread(filename);
     
-%     if(Driver(k).type == 1 || Driver(k).type == 3)
-%         [spl, spl_d, spl_dd] = DriverGetSplines(driver_info);
-%         Driver(k).spline = spl;
-%         Driver(k).spline_d = spl_d;
-%         Driver(k).spline_dd = spl_dd;
-%     end
+    %getting splines for forces and centers of pressure
     
+    FPlate(k).Fxy_spline   = spline(FPlate_info(:,1),FPlate_info(:,2));
+    FPlate(k).Fz_spline    = spline(FPlate_info(:,1),FPlate_info(:,3));
+    FPlate(k).COPxy_spline = spline(FPlate_info(:,1),FPlate_info(:,4));
+    FPlate(k).COPz_spline  = spline(FPlate_info(:,1),FPlate_info(:,5));
+        
 end
 
 % Read the Analysis Time
