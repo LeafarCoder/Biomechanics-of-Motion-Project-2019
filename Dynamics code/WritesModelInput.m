@@ -1,18 +1,18 @@
 function WritesModelInput(ModelName)
 
-global NBody NRevolute NGround NDriver NFPlates removeVar
+global NBody NRevolute NGround NDriver NFPlate removeVar
 global Body JntRevolute Ground Driver FPlate
 
 %Open file
 fid = fopen(ModelName, 'w');
 
 %Store the general dimensions of the system
-fprintf(fid, '%i %i %i %i %i\r\n', NBody, NRevolute, NGround, NDriver, NFPlates);
+fprintf(fid, '%i %i %i %i %i\r\n', NBody, NRevolute, NGround, NDriver, NFPlate);
 
 %Stores the data for the rigid body information
 for i = 1:NBody
     fprintf(fid, '%i %f %f %f %f %f %f %f %s\r\n', i,...
-        Body(i).mass, Body(i).rg, ...
+        Body(i).mass, Body(i).J, ...
         Body(i).r(1,1), Body(i).r(1,2), Body(i).theta(1),...
         Body(i).Length, Body(i).PCoM, Body(i).Name);
 end
@@ -50,7 +50,7 @@ for k = 1:NDriver
 end
 
 %Stores the data regarding the force plates
-for k = 1:NFPlates
+for k = 1:NFPlate
     
     %Bodies i and j
     i = FPlate(k).i;
@@ -58,12 +58,12 @@ for k = 1:NFPlates
     
     fprintf(fid, '%i %i %i %f %f %f %f %i\r\n',k,i,j,...
         FPlate(k).spi(1)*Body(i).Length, FPlate(k).spi(2)*Body(i).Length,...
-        FPlate(k).spj(1)*Body(i).Length, FPlate(k).spj(2)*Body(i).Length,...
+        FPlate(k).spj(1)*Body(j).Length, FPlate(k).spj(2)*Body(j).Length,...
         FPlate(k).filename);
     
     %writes the data to the files
     file = ['FPlates_',num2str(FPlate(k).filename),'.txt'];
-    dlmwrite(file, FPlate(k).Data, 'delimiter', ' ', 'precision', 16, 'newline', 'pc');
+    dlmwrite(file, FPlate(k).Data, 'delimiter', ' ', 'precision', 8, 'newline', 'pc');
 end
 
 %Writes the time information
