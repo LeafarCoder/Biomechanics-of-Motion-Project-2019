@@ -8,10 +8,13 @@ read_progress = waitbar(0, 'Reading Biomechanical Model input file...');
 [q,qd,qdd] = ReadInput(biomechanical_model_save_file);
 close(read_progress);
 
-%Correct the initial conditions and form the initial y vector
+%Correct the initial conditions
 
-[q(:,1),qd(:,1)]=CorrectInitialConditions();
-y0=[q(:,1);qd(:,1)];
+[q0,qd0]=CorrectInitialConditions();
+q(:,tstart) =q0
+qd(:,tstart) =
+%form the initial y vector
+y0=[q0;qd0];
 
 %Call the matlab time integrator
 

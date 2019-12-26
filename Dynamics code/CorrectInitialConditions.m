@@ -1,4 +1,4 @@
-function [q,qd] = CorrectInitialConditions
+function [q,qd] = CorrectInitialConditions()
 
 %global memory assignment
 global NBody Body tstart
@@ -16,13 +16,13 @@ for i = 1:NBody
 end
 
 %Perform the position analysis
-[q] = PositionAnalysis(q,time);
+q = PositionAnalysis(q,time);
 
 %Perform the velocity analysis
-[qd,~] = VelocityAnalysis(q,time);
+qd = VelocityAnalysis(q,time);
 
 %Transfer data to working arrays
-for i = 1:NBodies
+for i = 1:NBody
     i1 = 3*i-2;
     i2 = i1+1;
     i3 = i2+1;
