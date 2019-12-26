@@ -51,7 +51,7 @@ for k = 1:NGround
     H = sscanf(t_line, "%i %f %f %f");
     Ground(k).i = H(1);
     Ground(k).rP0 = H(2:3);
-    Ground(k).tehta0 = H(4);
+    Ground(k).theta0 = H(4);
     to be developed further
 end
 

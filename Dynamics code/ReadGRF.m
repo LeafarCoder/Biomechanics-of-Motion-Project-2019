@@ -1,4 +1,4 @@
-function ReadGRF(force_file, samplingFreq)
+function ReadGRF(force_file, samplingFreq,remove_var)
 %Reads and filters the data from the force plates
 
 global FPlate
@@ -22,9 +22,20 @@ RawData(3).fp = fp3;
 for i = 1:3
     %saves only the data relevant for 2D analysis - the data eliminated
     %from the positions is eliminated here as well
-    FPData = [  RawData(i).fp(:,1), RawData(i).fp(:,3),...
-                RawData(i).fp(:,4), RawData(i).fp(:,6)]...
-                .* [1, 1, 1e-3, 1e-3];
+    % remove_var==1 for Deadlift && remove_var==2 for Gait
+    %attention if PCA is used
+    
+    if remove_var==1
+        FPData = [  RawData(i).fp(:,2), RawData(i).fp(:,3),...
+                    RawData(i).fp(:,5), RawData(i).fp(:,6)]...
+                    .* [1, 1, 1e-3, 1e-3];
+    %remove_Var==2
+    else
+        FPData = [  RawData(i).fp(:,1), RawData(i).fp(:,3),...
+                    RawData(i).fp(:,4), RawData(i).fp(:,6)]...
+                    .* [1, 1, 1e-3, 1e-3];
+
+    end
         
      %filters the data
      FilteredData = FilterForcePlateData(FPData, samplingFreq);

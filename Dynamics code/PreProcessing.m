@@ -54,8 +54,10 @@ waitbar(0.9, progress_bar, 'Evaluating drivers...');
 EvaluateDrivers(GaitData);
 
 %Process the ground reaction forces
+%ATTENTION: READGRF MUST REMOVE THE RIGHT FORCE AND COP COORDINATE
+% DEPENDING ON MOTION: DAEDLIFT VS GAIT
 waitbar(0.95, progress_bar, 'Processing the ground reaction forces...');
-ReadGRF(force_file, GaitData.Frequency);
+ReadGRF(force_file, GaitData.Frequency,motion_remove_var);
 
 % Updates the data in the files to be read by the kinematic analysis
 waitbar(1, progress_bar, 'Saving Biomechanical Model...');
