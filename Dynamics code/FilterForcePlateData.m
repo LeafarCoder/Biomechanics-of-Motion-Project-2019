@@ -3,7 +3,7 @@ function ProcessedData = FilterForcePlateData(ProcessedData, SamplingFrequency)
 %of time in which contact existed by finding the time steps for which the
 %force was larger than a certain threshold
 
-force_threshold = 5;
+force_threshold = 6;
 
 ContactTimeSteps = find(ProcessedData(:,2) > force_threshold);
 ContactIndices = (ProcessedData(:,2) > force_threshold);
@@ -16,6 +16,13 @@ for j = 1:2
     %the instants of time for which no contact existed will be assigned a
     %0N force
     FilteredData(~ContactIndices) = 0;
+     
+%     %plot
+%     figure()
+%     plot(ProcessedData(:,j));
+%     hold on;
+%     plot(FilteredData,'r');
+%     hold off;
     
     %Update the output
     ProcessedData(:,j) = FilteredData;
@@ -45,6 +52,13 @@ for j = 3:4
     
     %update the output
     ProcessedData(:,j) = FilteredData; 
+    
+%     %plot
+%     figure()
+%     plot(RawCoP);
+%     hold on;
+%     plot(FilteredData,'r');
+%     hold off;
 end
 
 end

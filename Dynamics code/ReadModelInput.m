@@ -32,7 +32,7 @@ for i=1:NBody
     Body(i).pi = H(4);
     Body(i).pj = H(5);
     Body(i).PCoM = H(6);
-    Body(i).Name = char(sscanf(t_line, "%*i %*i %*i %*f %s"))';
+    Body(i).Name = char(sscanf(t_line, "%*i %*f %*f %*i %*i %*f %s"))';
 end
 
 % Store the data for the revolute joints information
