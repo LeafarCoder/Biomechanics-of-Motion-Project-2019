@@ -63,9 +63,9 @@ fp2_f_tr = zeros(sampleNum,9);
 fp3_f_tr = zeros(sampleNum,9);
 
 for i = 1:9
-    fp1_f_tr(:,i) = pontos_aux{1,1}{:,i+2};
-    fp2_f_tr(:,i) = pontos_aux{1,2}{:,i+2};
-    fp3_f_tr(:,i) = pontos_aux{1,3}{:,i+2};   
+    fp1_f_tr(:,i) = pontos_aux{1,1}.data(:,i);
+    fp2_f_tr(:,i) = pontos_aux{1,2}.data(:,i);
+    fp3_f_tr(:,i) = pontos_aux{1,3}.data(:,i);   
 end
 
 COP1_x(:,1) = fp1_f_tr(:,8) + fpdata{1,1}.xy.x + (fpdata{1,1}.length_fp)/2;
