@@ -1,13 +1,13 @@
 function WritesModelInput(ModelName)
 
-global NBody NRevolute NGround NDriver NFPlates removeVar
+global NBody NRevolute NGround NDriver NFPlate removeVar
 global Body JntRevolute Ground Driver FPlate
 
 %Open file
 fid = fopen(ModelName, 'w');
 
 %Store the general dimensions of the system
-fprintf(fid, '%i %i %i %i %i\r\n', NBody, NRevolute, NGround, NDriver, NFPlates);
+fprintf(fid, '%i %i %i %i %i\r\n', NBody, NRevolute, NGround, NDriver, NFPlate);
 
 %Stores the data for the rigid body information
 for i = 1:NBody
@@ -50,7 +50,7 @@ for k = 1:NDriver
 end
 
 %Stores the data regarding the force plates
-for k = 1:NFPlates
+for k = 1:NFPlate
     
     %Bodies i and j
     i = FPlate(k).i;
@@ -63,7 +63,7 @@ for k = 1:NFPlates
     
     %writes the data to the files
     file = ['FPlates_',num2str(FPlate(k).filename),'.txt'];
-    dlmwrite(file, FPlate(k).Data, 'delimiter', ' ', 'precision', 16, 'newline', 'pc');
+    dlmwrite(file, FPlate(k).Data, 'delimiter', ' ', 'precision', 8, 'newline', 'pc');
 end
 
 %Writes the time information
