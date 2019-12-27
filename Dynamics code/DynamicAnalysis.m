@@ -14,7 +14,7 @@ close(read_progress);
 y0=[q(:,1);qd(:,1)];
 
 %Call the matlab time integrator
-
+tspan=tstart:tstep:tend;
 [t,y]=ode45(@FuncEval,tspan,y0);
 
 %Report the results

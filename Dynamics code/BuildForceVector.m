@@ -1,12 +1,12 @@
-function [g] = BuildForceVector()
+function [g] = BuildForceVector(t)
 
 %add the gravitational forces
 [g] = ForceGravity();
 
-%add the spring-damper-actuator forces
-[g] = ForceSDA(g);
+%add the spring-damper-actuator forces - not used
+%[g] = ForceSDA(g);
 
 %add contact forces
-[g] = ForceContact(g);
+[g] = ForceContact(g,t);
 
 end
