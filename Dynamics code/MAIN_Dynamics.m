@@ -42,13 +42,14 @@
 clear all;
 
 % choose GAIT (1) or DEADLIFT (2) motion
-motion_option = 1;
+motion_option = 2;
 
 analysis_names = {'Gait', 'Deadlift'};
 analysis_name = analysis_names{motion_option};
 
 cf = pwd;   % Current folder
-biomechanical_model_input_file = [cf, '\HumanBiomechanicalModel.txt'];
+biomechanical_model_input_files = {[cf, '\HumanBiomechanicalModel_Gait.txt'], [cf, '\HumanBiomechanicalModel_Deadlift.txt']};
+biomechanical_model_input_file = biomechanical_model_input_files{motion_option};
 biomechanical_model_save_file = [cf, '\BiomechanicalModel.txt'];
 
 static_file = [cf, '\LabData\static.tsv'];
@@ -79,7 +80,7 @@ offset = 10;
 dynamic_vars = {q, qd, qdd, Fx, Fz, T, time};
 
 %% Visualize Simulation (stickman)
-rate = 1;
+rate = 2;
 show_laterality = true;
 show_at = [0.3,0.6,0.9];
 close all;
