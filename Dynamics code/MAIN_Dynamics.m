@@ -42,13 +42,14 @@
 clear all;
 
 % choose GAIT (1) or DEADLIFT (2) motion
-motion_option = 1;
+motion_option = 2;
 
 analysis_names = {'Gait', 'Deadlift'};
 analysis_name = analysis_names{motion_option};
 
 cf = pwd;   % Current folder
-biomechanical_model_input_file = [cf, '\HumanBiomechanicalModel.txt'];
+biomechanical_model_input_files = {[cf, '\HumanBiomechanicalModel_Gait.txt'], [cf, '\HumanBiomechanicalModel_Deadlift.txt']};
+biomechanical_model_input_file = biomechanical_model_input_files{motion_option};
 biomechanical_model_save_file = [cf, '\BiomechanicalModel.txt'];
 
 static_file = [cf, '\LabData\static.tsv'];
@@ -72,8 +73,7 @@ PreProcessing(  biomechanical_model_input_file,...
                 ...motion_file, 'pca', 0);
                 motion_file, 'var', motion_remove_var,...
                 force_file, subjectMass);
-
-
+disp('Preprocessing Complete')
 %% Perform Dynamic Analysis
 offset = 10;
 [q, qd, qdd, Fx, Fz, T, time] = DynamicAnalysis(biomechanical_model_save_file, offset);
