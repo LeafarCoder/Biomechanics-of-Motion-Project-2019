@@ -72,8 +72,7 @@ PreProcessing(  biomechanical_model_input_file,...
                 ...motion_file, 'pca', 0);
                 motion_file, 'var', motion_remove_var,...
                 force_file, subjectMass);
-
-
+disp('Preprocessing Complete')
 %% Perform Dynamic Analysis
 offset = 10;
 [q, qd, qdd, Fx, Fz, T, time] = DynamicAnalysis(biomechanical_model_save_file, offset);

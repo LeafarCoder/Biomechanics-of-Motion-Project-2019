@@ -6,14 +6,14 @@ global NFPlate FPlate Body
 for k=1:NFPlate
 
     %Evaluate the splines of Forces and COP at time t 
-    Fxy =   ppval(FPlate(k).Fxy_spline, t);
-    Fz =    ppval(FPlate(k).Fz_spline, t);
+    Fxy   = ppval(FPlate(k).Fxy_spline, t);
+    Fz    = ppval(FPlate(k).Fz_spline, t);
     CoPxy = ppval(FPlate(k).COPxy_spline, t);
-    CoPz = ppval(FPlate(k).COPz_spline, t);
+    CoPz  = ppval(FPlate(k).COPz_spline, t);
     %Simplifying variable use
-    i=FPlate(k).i;
-    j=FPlate(k).j;
-    spiB=FPlate(k).spi;
+    i = FPlate(k).i;
+    j = FPlate(k).j;
+    spiB = FPlate(k).spi;
     
     %Applys to the right body the force and corresponding Moment
     
@@ -23,12 +23,12 @@ for k=1:NFPlate
     
     if CoPxy < Boundary_Point
         %apply force to body i
-        Rcm=[CoPxy;CoPz]-Body(i).r;
-        [g] = ApplyForce(i,g,Force,Rcm);
+        Rcm = [CoPxy;CoPz] - Body(i).r;
+        [g] = ApplyForce(i, g, Force, Rcm);
     else
         %apply force to body j
-        Rcm=[CoPxy;CoPz]-Body(j).r;
-        [g] = ApplyForce(j,g,Force,Rcm);
+        Rcm = [CoPxy; CoPz] - Body(j).r;
+        [g] = ApplyForce(j, g, Force, Rcm);
         
     end
 
