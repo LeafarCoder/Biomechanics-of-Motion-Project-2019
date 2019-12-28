@@ -42,7 +42,7 @@
 clear all;
 
 % choose GAIT (1) or DEADLIFT (2) motion
-motion_option = 2;
+motion_option = 1;
 
 analysis_names = {'Gait', 'Deadlift'};
 analysis_name = analysis_names{motion_option};
@@ -80,6 +80,7 @@ offset = 10;
 dynamic_vars = {q, qd, qdd, Fx, Fz, T, time};
 
 %% Visualize Simulation (stickman)
+
 rate = 5;
 show_laterality = true;
 show_at = [0.3,0.6,0.9];

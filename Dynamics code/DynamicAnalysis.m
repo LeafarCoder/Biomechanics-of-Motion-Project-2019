@@ -33,7 +33,14 @@ for i = 1:length(t)
 end
 
 %Calculating internal forces Fx, Fz, T 
-% Apply black magic ????????
+% F contains all Fx, Fz, T forces/ moments
+% F is in the form (F(i)', F(j)', ...) where F(i) are the forces and joint 
+% moment associated with revolute joint i
+
+
+for i = 1:length(t)
+  %  F(:,i) = Calculate_Internal_Forces(lambda(:,i), Jac(:,:,i));
+end
 
 
 
