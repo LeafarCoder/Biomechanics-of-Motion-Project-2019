@@ -80,7 +80,7 @@ offset = 10;
 dynamic_vars = {q, qd, qdd, Fx, Fz, T, time};
 
 %% Visualize Simulation (stickman)
-rate = 1;
+rate = 5;
 show_laterality = true;
 show_at = [0.3,0.6,0.9];
 close all;
