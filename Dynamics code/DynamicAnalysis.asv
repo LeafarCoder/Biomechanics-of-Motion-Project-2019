@@ -22,7 +22,7 @@ q = y(:,1:NCoord)';
 qd = y(:,NCoord+1:end)';
 %Report the results
 
-%Report(t,y);
+Report(t,y);
 %Temporary Bullshit
 Fx=0;
 Fy=0;

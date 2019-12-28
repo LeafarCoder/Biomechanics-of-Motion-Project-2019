@@ -1,9 +1,9 @@
 function [M] = BuildMassMatrix()
 %access the global memory
-global NBody Body
+global NBody Body NCoord
 
 %create memory space for mass matrix
-M = zeros(NCoordinates,NCoordinates);
+M = zeros(NCoord,NCoord);
 
 for i = 1:NBody
     i1 = 3*i - 2;

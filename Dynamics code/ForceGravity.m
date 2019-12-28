@@ -1,9 +1,9 @@
 function [g] = ForceGravity()
 
-global Body NBodies NCoordinates
+global Body NBodies NCoord
 
 % initialize the force vector
-g = zeros(NCoordinates,1);
+g = zeros(NCoord,1);
 
 % include the gravity force for every body
 for i=1:NBodies

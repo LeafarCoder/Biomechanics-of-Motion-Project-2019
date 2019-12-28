@@ -1,11 +1,11 @@
 function [q,qd] = y2q(y)
 
 %access the global memory
-global NBody Body
+global NBody Body NCoord
 
 % Create vectors q and qd
-q = y(1:NCoordinates,1);
-qd = y(NCoordinates+1:end,1);
+q = y(1:NCoord,1);
+qd = y(NCoord+1:end,1);
 
 % Update the body information
 for i = 1:NBody

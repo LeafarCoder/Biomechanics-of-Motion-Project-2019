@@ -123,7 +123,7 @@ H = sscanf(t_line, "%f %f %f");
 tstart = H(1);
 tstep = H(2);
 tend = H(3);
-NSteps = (tend - tstart) / tstep;
+NSteps = (tend - tstart) / tstep+1;
 
 % Variable that has been removed from analysis (X=1, Y=2, Z=3)
 t_line = fgetl(file);
