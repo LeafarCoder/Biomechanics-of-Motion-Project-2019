@@ -42,7 +42,7 @@
 clear all;
 
 % choose GAIT (1) or DEADLIFT (2) motion
-motion_option = 2;
+motion_option = 1;
 
 analysis_names = {'Gait', 'Deadlift'};
 analysis_name = analysis_names{motion_option};
@@ -60,6 +60,10 @@ motion_file = motion_files{motion_option};
 remove_vars = {2, 1};
 motion_remove_var = remove_vars{motion_option};
 
+% Trim (or use 'all') the motion to only analyse that section (in seconds)
+times_range_of_interest = {"all", [2.70, 7.50]};
+time_range_of_interest = times_range_of_interest{motion_option};
+
 % Only the first force file (f1) needs to be uploaded, all others will be
 % deduced from the name (for that the file names must be consistent)
 force_files = {[cf, '\LabData\gait_f1.tsv'], [cf, '\LabData\deadlift_f1.tsv']};
@@ -72,14 +76,17 @@ PreProcessing(  biomechanical_model_input_file,...
                 static_file, 'var', static_remove_var,...
                 ...motion_file, 'pca', 0);
                 motion_file, 'var', motion_remove_var,...
-                force_file, subjectMass);
+                time_range_of_interest, force_file, subjectMass);
+            
 disp('Preprocessing Complete')
 %% Perform Dynamic Analysis
 offset = 10;
-[q, qd, qdd, Fx, Fz, T, time] = DynamicAnalysis(biomechanical_model_save_file, offset);
-dynamic_vars = {q, qd, qdd, Fx, Fz, T, time};
+[q, qd, qdd, F, time] = DynamicAnalysis(biomechanical_model_save_file, offset);
+kinematic_vars = {q, qd, qdd, time};
+dynamic_vars = {F(1:3:end,:), F(2:3:end,:), F(3:3:end,:), time};
 
 %% Visualize Simulation (stickman)
+
 rate = 5;
 show_laterality = true;
 show_at = [0.3,0.6,0.9];
@@ -89,7 +96,7 @@ ShowAnimation(q, time, rate, show_laterality);
 
 %% Show Dynamic plots
 % show Fx (1), Fy(2) or Momentum(3) for all bodies
-var_option = 1;
+var_option = 3;
 ShowDynamicPlots(dynamic_vars, var_option);
 
 %% Save Dynamic plots and variables on specified path
