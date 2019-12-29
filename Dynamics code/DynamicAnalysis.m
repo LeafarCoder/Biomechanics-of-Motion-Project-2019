@@ -1,7 +1,7 @@
 function [q, qd, qdd, F, t] = DynamicAnalysis(biomechanical_model_save_file, offset)
 
 % Define global variables
-global tstart tstep tend read_progress NCoord
+global tstart tstep tend read_progress NCoord NRevolute
 
 %Reads the output of the preprocessing and interpolates the driver and force plate data
 read_progress = waitbar(0, 'Reading Biomechanical Model input file...');
@@ -37,11 +37,19 @@ end
 % F is in the form (F(i)', F(j)', ...) where F(i) are the forces and joint 
 % moment associated with revolute joint i
 
-
+F = zeros(3*NRevolute, length(t));
 for i = 1:length(t)
     F(:,i) = Calculate_Internal_Forces(lambda(:,i), Jac(:,:,i));
 end
 
+%Remove offset
+
+q = q(:,offset+1:end-offset);
+qd = qd(:,offset+1:end-offset);
+qdd = qdd(:,offset+1:end-offset);
+F = F(:,offset+1:end-offset);
+t = t(offset+1:end-offset);
+t = t - t(1);
 
 end
 
