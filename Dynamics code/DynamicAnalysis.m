@@ -39,7 +39,7 @@ end
 
 
 for i = 1:length(t)
-  %  F(:,i) = Calculate_Internal_Forces(lambda(:,i), Jac(:,:,i));
+    F(:,i) = Calculate_Internal_Forces(lambda(:,i), Jac(:,:,i));
 end
 
 

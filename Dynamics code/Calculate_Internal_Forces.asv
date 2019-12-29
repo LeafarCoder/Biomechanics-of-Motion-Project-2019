@@ -19,11 +19,12 @@ for k = 1:NRevolute
     %Picks out correct lines from Jacobian and lambdas for Moment
     Nskip = 2*NRevolute;
     Jac_driver = Jac(Nskip + k,:)';
-    lambda_driver = lambda(Nskip + k, 1);
+    lambda_driver = lambda(Nskip + k,:);
     F_driver = Jac_driver * lambda_driver;
-    %this line needs revision!!!!!!!!!!!!!!!!!!!!!!
     F(k1+2, 1) = F(k1+2, 1) + F_driver(i1+2, 1);
 end
+
+for k = 1:NDriver
 
 
 end
