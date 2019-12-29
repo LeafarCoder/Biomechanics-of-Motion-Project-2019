@@ -96,5 +96,5 @@ ShowDynamicPlots(dynamic_vars, var_option);
 %% Save Dynamic plots and variables on specified path
 % jpg, png, fig (allows to reopen in Matlab and analyse more carefully)
 % if 'fig' is used then, to reopen the figure use: openfig(file_path,'visible');
-file_extension = 'jpg';
-SaveDynamicAnalysis(dynamic_vars, analysis_name, file_extension);
+%file_extension = 'jpg';
+%SaveDynamicAnalysis(dynamic_vars, analysis_name, file_extension);
