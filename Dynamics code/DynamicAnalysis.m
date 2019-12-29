@@ -43,7 +43,6 @@ for i = 1:length(t)
 end
 
 %Remove offset
-
 q = q(:,offset+1:end-offset);
 qd = qd(:,offset+1:end-offset);
 qdd = qdd(:,offset+1:end-offset);

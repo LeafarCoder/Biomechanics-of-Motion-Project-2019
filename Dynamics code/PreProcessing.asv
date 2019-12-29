@@ -2,7 +2,7 @@ function PreProcessing( biomechanical_model_file,...
                         biomechanical_model_save_file,...
                         static_file, static_remove_method, static_remove_var, ...
                         motion_file, motion_remove_method, motion_remove_var, ...
-                        time_range_of_interest, force_file, subjectMass)
+                        force_file, subjectMass, time_range_of_interest)
 % Pre-processing of data from the Laboratory of Biomechanics of Lisbon
 % The PreProcessing function requires:
 % - A Biomechanical Model input file from where to read the model
@@ -13,8 +13,7 @@ function PreProcessing( biomechanical_model_file,...
 %   - The method of projection to the sagital plane
 %   - The variable (dummy or not) to remove (only useful for method='var')
 % - The subject mass for the inertial calculations
-% - The time range for which the analysis will be done (trim from the
-% original whole motion)
+% - The 
 
 % Global memory data
 global removeVar
@@ -45,7 +44,7 @@ ComputeBodyInertialProperties(subjectMass);
 % Reads data
 % Remove coordinate 'motion_remove': 1-X, 2-Y, 3-Z
 waitbar(0.6, progress_bar, 'Reading and filtering the Gait data...');
-GaitData = ReadProcessData(motion_file, motion_remove_method, motion_remove_var, time_range_of_interest);
+GaitData = ReadProcessData(motion_file, motion_remove_method, motion_remove_var);
 
 % Computes the positions and angles of the body
 waitbar(0.8, progress_bar, 'Evaluating positions...');

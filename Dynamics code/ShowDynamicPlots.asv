@@ -1,0 +1,38 @@
+function ShowDynamicPlots(vars, option)
+
+global Body JntRevolute removeVar
+
+% remove 'offset' frames from the beggining and end of the plots.
+offset = 0;
+
+var = vars{option};
+varNames = {'X Force', 'Y Force', 'torque'};
+varName = varNames{option};
+units = {'N', 'N', 'N*m'};
+unit = units{opton};
+time = vars{4};
+time = time(offset+1:end-offset);
+
+n = ceil(sqrt(NBody));
+t = linspace(time(1), time(end), size(var,2));
+
+if(removeVar == 1)
+    list = {'F_x', 'F_y', 'Torque'};
+else
+    list = {'F_x', 'F_z', 'Torque'};
+end
+
+t_coord = list{coord};
+figure('Name', ['Displaying ',varName,' for coordinate ',t_coord])
+
+for i=1:NBody
+    subplot(n,n,i);
+    c = (i-1)*3 + coord;
+    plot(t,var(c,:));
+    title([Body(floor((c-1)/3)+1).Name]);
+    xlabel('Time (s)');
+    ylabel([t_coord, '(', units{coord}, ')']);
+end
+
+end
+
