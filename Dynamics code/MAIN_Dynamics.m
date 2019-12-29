@@ -76,8 +76,8 @@ PreProcessing(  biomechanical_model_input_file,...
 disp('Preprocessing Complete')
 %% Perform Dynamic Analysis
 offset = 10;
-[q, qd, qdd, Fx, Fz, T, time] = DynamicAnalysis(biomechanical_model_save_file, offset);
-dynamic_vars = {q, qd, qdd, Fx, Fz, T, time};
+[q, qd, qdd, F, time] = DynamicAnalysis(biomechanical_model_save_file, offset);
+dynamic_vars = {q, qd, qdd, F, time};
 
 %% Visualize Simulation (stickman)
 

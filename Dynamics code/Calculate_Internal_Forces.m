@@ -23,6 +23,7 @@ for k = 1:NRevolute
     F_driver = Jac_driver * lambda_driver;
     %this line needs revision!!!!!!!!!!!!!!!!!!!!!!
     F(k1+2, 1) = F(k1+2, 1) + F_driver(i1+2, 1);
+    a=1;
 end
 
 

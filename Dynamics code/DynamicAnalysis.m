@@ -1,4 +1,4 @@
-function [q, qd, qdd, Fx, Fz, T, t] = DynamicAnalysis(biomechanical_model_save_file, offset)
+function [q, qd, qdd, F, t] = DynamicAnalysis(biomechanical_model_save_file, offset)
 
 % Define global variables
 global tstart tstep tend read_progress NCoord
@@ -42,12 +42,6 @@ for i = 1:length(t)
     F(:,i) = Calculate_Internal_Forces(lambda(:,i), Jac(:,:,i));
 end
 
-
-
-%Temporary Bullshit
-Fx=0;
-Fz=0;
-T=0;
 
 end
 
