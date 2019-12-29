@@ -1,7 +1,7 @@
 function [q, qd, qdd, F, t] = DynamicAnalysis(biomechanical_model_save_file, offset)
 
 % Define global variables
-global tstart tstep tend read_progress NCoord NRevolute
+global tstart tstep tend read_progress NCoord NRevolute Driver
 
 %Reads the output of the preprocessing and interpolates the driver and force plate data
 read_progress = waitbar(0, 'Reading Biomechanical Model input file...');
@@ -47,9 +47,15 @@ q = q(:,offset+1:end-offset);
 qd = qd(:,offset+1:end-offset);
 qdd = qdd(:,offset+1:end-offset);
 F = F(:,offset+1:end-offset);
+%lambda = lambda(:,offset+1:end-offset);
 t = t(offset+1:end-offset);
 t = t - t(1);
 
+disp('Dynamic Analysis Complete')
+
+% aa=ppval(Driver(7).spline_dd, t);
+% figure()
+% plot(aa);
 end
 
 

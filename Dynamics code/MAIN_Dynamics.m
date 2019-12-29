@@ -85,6 +85,7 @@ offset = 10;
 kinematic_vars = {q, qd, qdd, time};
 dynamic_vars = {F(1:3:end,:), F(2:3:end,:), F(3:3:end,:), time};
 
+
 %% Visualize Simulation (stickman)
 
 rate = 5;
@@ -98,6 +99,12 @@ ShowAnimation(q, time, rate, show_laterality);
 % show Fx (1), Fy(2) or Momentum(3) for all bodies
 var_option = 3;
 ShowDynamicPlots(dynamic_vars, var_option);
+
+%% Show Kinematic plots
+% show POSITIONS (1), VELOCITIES (2) or ACCELERATIONS (3) for all bodies
+var_option = 3;
+ShowKinematicPlots(kinematic_vars, var_option);
+
 
 %% Save Dynamic plots and variables on specified path
 % jpg, png, fig (allows to reopen in Matlab and analyse more carefully)

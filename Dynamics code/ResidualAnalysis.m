@@ -40,6 +40,13 @@ b=coefs(1);
 [~,fc_index] = min(abs(R(:)-b));
 FilteredData = Data_filt(:,fc_index);
 
+%     %plot
+%     disp(fc(fc_index));
+%     figure()
+%     plot(Data);
+%     hold on;
+%     plot(FilteredData,'r');
+%     hold off;
 
 end
 
