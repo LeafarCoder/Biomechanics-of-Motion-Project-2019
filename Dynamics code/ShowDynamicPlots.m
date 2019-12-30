@@ -33,7 +33,7 @@ for k = 1:NRevolute
     lowpass = movmean(var(k,:),6);
     plot((t./t(end))*100,var(k,:)./mass);
     hold on;
-    plot((t./t(end))*100,lowpass./mass,'LineWidth',2);
+    %plot((t./t(end))*100,lowpass./mass,'LineWidth',2);
     title([Body(JntRevolute(k).i).Name, ' <> ', Body(JntRevolute(k).j).Name]);
     xlabel('% of cycle');
     ylabel([t_coord, '(', unit, ')']);

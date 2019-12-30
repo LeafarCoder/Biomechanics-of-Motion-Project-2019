@@ -88,7 +88,7 @@ dynamic_vars = {F(1:3:end,:), F(2:3:end,:), F(3:3:end,:), time};
 
 %% Visualize Simulation (stickman)
 
-rate = 5;
+rate = 3;
 show_laterality = true;
 show_at = [0.3,0.6,0.9];
 close all;
@@ -96,10 +96,8 @@ ShowAnimation(q, time, rate, show_laterality);
 %ShowAnimation(q, time, rate, show_laterality, show_at);
 
 %% Show Dynamic plots
-% show Fx (1), Fy(2) or Momentum(3) for all bodies
-var_option = 2;
-%Change sign on plots, to analyse the same as literature
-dynamic_vars = {F(1:3:end,:), F(2:3:end,:), -F(3:3:end,:), time};
+% show Fx/Fy (1), Fz(2) or Momentum(3) for all bodies
+var_option = 3;
 ShowDynamicPlots(dynamic_vars, var_option);
 
 %% Show Kinematic plots

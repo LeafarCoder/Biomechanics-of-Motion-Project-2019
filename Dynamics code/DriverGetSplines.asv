@@ -20,16 +20,16 @@ end
 spl_dda = mkpp(t,coefs_dd);
 
 spl_dda_eval=ppval(spl_dda, t);
-spl_dda_filtered=DoublePassLPFilter(spl_dda_eval, 10, 100);
-spl_dd = spline(t,spl_dda_filtered);
+spl_dda_eval_corrected=DoublePassLPFilter(spl_dda_eval, 5, 100);
+spl_dd = spline(t,spl_dda_eval_corrected);
 
 %plot
-% aaaa=ppval(spl_dd, t);
-% figure()
-% plot(spl_dda_eval);
-% hold on;
-% plot(aaaa, 'r');
-% 
-% hold off;
+aaaa=ppval(spl_dd, t);
+figure()
+plot(spl_dda_eval);
+hold on;
+plot(aaaa, 'r');
 
+hold off;
+%spl_dd=splline(t,ppval(spl_ddb,t));
 end

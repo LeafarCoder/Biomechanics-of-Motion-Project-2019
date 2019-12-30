@@ -60,6 +60,7 @@ disp('Dynamic Analysis Complete')
 % figure()
 % plot(aa);
 % aa=ppval(Driver(7).spline_dd, t);
+% aaa=DoublePassLPFilter(aa, 5, 100);
 % figure()
 % plot(aa);
 end
