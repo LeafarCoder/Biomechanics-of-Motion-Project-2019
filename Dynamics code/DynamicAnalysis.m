@@ -53,6 +53,12 @@ t = t - t(1);
 
 disp('Dynamic Analysis Complete')
 
+% aa=ppval(Driver(7).spline, t);
+% figure()
+% plot(aa);
+% aa=ppval(Driver(7).spline_d, t);
+% figure()
+% plot(aa);
 % aa=ppval(Driver(7).spline_dd, t);
 % figure()
 % plot(aa);

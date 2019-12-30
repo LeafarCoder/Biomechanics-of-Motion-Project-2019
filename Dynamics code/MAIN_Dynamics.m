@@ -97,7 +97,9 @@ ShowAnimation(q, time, rate, show_laterality);
 
 %% Show Dynamic plots
 % show Fx (1), Fy(2) or Momentum(3) for all bodies
-var_option = 3;
+var_option = 2;
+%Change sign on plots, to analyse the same as literature
+dynamic_vars = {F(1:3:end,:), F(2:3:end,:), -F(3:3:end,:), time};
 ShowDynamicPlots(dynamic_vars, var_option);
 
 %% Show Kinematic plots
