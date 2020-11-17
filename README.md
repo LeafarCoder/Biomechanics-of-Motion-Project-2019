@@ -1,2 +1,4 @@
-# BM-Project-2019
-Project for Biomechanics of Motion (Fall 2019)
+# Biomechanics of Motion - Project 2019
+
+
+Project for the course of Biomechanics of Motion (Fall 2019)
