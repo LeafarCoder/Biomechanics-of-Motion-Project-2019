@@ -14,11 +14,12 @@ PCA (Principal Component Analysis) is used here to force the movement to happen 
 
 ---
 
-Two different motions were studied: a simple walk stride and a deadlift exercise.
+Two different motions were studied: a simple **walk stride** and a **deadlift** exercise.
 
 
 | | |
 :----:|:------:
+| | |
 Walk stride example | Stick-figure constructed from the collected lab data
 <img src="gait_example.gif" alt="drawing" width="300"/> | <img src="gait_stickman_50fps.gif" alt="drawing" width="500"/>
 <br> | <br>
