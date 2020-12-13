@@ -29,3 +29,11 @@ In practice, this is very hard to achieve and small deviations always happen. To
 In this example, PCA is used to force the initial movement (in red) to happen in the X direction (in blue):
 
 ![gif](/gait_simulation_30fps.gif)
+
+
+The benefits of this correction are clear when both versions (corrected and non-corrected) of the gait analysis are compared:
+
+| Non-corrected gait motion | Corrected gait motion |
+:---:|:---:
+<img src="gait_stickman_50fps.gif" alt="drawing" width="500"/> | <img src="gait_stickman_noPCA_50fps.gif" alt="drawing" width="500"/>
+
