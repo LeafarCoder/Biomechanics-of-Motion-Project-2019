@@ -20,9 +20,7 @@ Two different motions were studied: a simple walk stride and a deadlift exercise
 | | |
 :----:|:------:
 Walk stride example | Stick-figure constructed from the collected lab data
-<br> | <br>
 <img src="gait_example.gif" alt="drawing" width="300"/> | <img src="gait_stickman_50fps.gif" alt="drawing" width="500"/>
 <br> | <br>
 Deadlift example | Stick-figure constructed from the collected lab data
-<br> | <br>
 <img src="deadlift_example.gif" alt="drawing" width="500"/> | <img src="deadlift_stickman_50fps.gif" alt="drawing" width="500"/>
