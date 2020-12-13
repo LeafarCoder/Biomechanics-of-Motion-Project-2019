@@ -31,9 +31,11 @@ In this example, PCA is used to force the initial movement (in red) to happen in
 ![gif](/gait_simulation_30fps.gif)
 
 
-The benefits of this correction are clear when both versions (corrected and non-corrected) of the gait analysis are compared:
+The benefits of this correction are clear when both versions (corrected and non-corrected) of the gait analysis are compared below.
+
+At least two big artifacts observed in the non-corrected which disapear after the PCA correction: the feet go under the floor level and the arm movement is not natural (the subject walked with a healthy natural gate).
 
 | Non-corrected gait motion | Corrected gait motion |
 :---:|:---:
-<img src="gait_stickman_50fps.gif" alt="drawing" width="500"/> | <img src="gait_stickman_noPCA_50fps.gif" alt="drawing" width="500"/>
+<img src="gait_stickman_noPCA_50fps.gif" alt="drawing" width="500"/> | <img src="gait_stickman_50fps.gif" alt="drawing" width="500"/>
 
