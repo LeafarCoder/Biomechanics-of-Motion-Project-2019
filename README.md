@@ -14,11 +14,11 @@ Two different motions were studied: a simple **walk stride** and a **deadlift** 
 :----:|:------:
 | | |
 Walk stride example | Stick-figure constructed from the collected lab data
-<img src="gait_example.gif" alt="drawing" width="300"/> | <img src="gait_stickman_50fps.gif" alt="drawing" width="500"/>
+<img src="/gifs/gait_example.gif" alt="drawing" width="300"/> | <img src="/gifs/gait_stickman_50fps.gif" alt="drawing" width="500"/>
 | | |
 | | |
 Deadlift example | Stick-figure constructed from the collected lab data
-<img src="deadlift_example.gif" alt="drawing" width="500"/> | <img src="deadlift_stickman_50fps.gif" alt="drawing" width="500"/>
+<img src="/gifs/deadlift_example.gif" alt="drawing" width="500"/> | <img src="/gifs/deadlift_stickman_50fps.gif" alt="drawing" width="500"/>
 
 
 ## PCA correction
@@ -28,7 +28,7 @@ In practice, this is very hard to achieve and small deviations always happen. To
 
 In this example, PCA is used to force the initial movement (in red) to happen in the X direction (in blue):
 
-![gif](/gait_simulation_30fps.gif)
+![gif](/gifs/gait_simulation_30fps.gif)
 
 
 The benefits of this correction are clear when both versions (corrected and non-corrected) of the gait analysis are compared below.
@@ -37,5 +37,5 @@ At least two big artifacts observed in the non-corrected which disapear after th
 
 | Non-corrected gait motion | Corrected gait motion |
 :---:|:---:
-<img src="gait_stickman_noPCA_50fps.gif" alt="drawing" width="500"/> | <img src="gait_stickman_50fps.gif" alt="drawing" width="500"/>
+<img src="/gifs/gait_stickman_noPCA_50fps.gif" alt="drawing" width="500"/> | <img src="/gifs/gait_stickman_50fps.gif" alt="drawing" width="500"/>
 
