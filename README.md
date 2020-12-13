@@ -1,7 +1,8 @@
 # Biomechanics of Motion - Project 2019
 
 
-Project for the course of Biomechanics of Motion (Fall 2019) programmed in Matlab.
+Project for the course of Biomechanics of Motion (Fall 2019) lectured in [IST](http://tecnico.ulisboa.pt/) from the University of Lisbon.
+Programmed in Matlab.
 
 ---
 
@@ -15,5 +16,13 @@ PCA (Principal Component Analysis) is used here to force the movement to happen 
 
 Two different motions were studied: a simple walk stride and a deadlift exercise.
 
-<img src="deadlift_stickman_50fps.gif" alt="drawing" width="400"/>
-<img src="https://i.imgur.com/uhw7lNP.gif" alt="drawing" width="400"/>
+
+
+
+| Walk stride example | Stick-figure constructed from the collected lab data |
+:----:|:------:
+ | 
+
+| Deadlift example | Stick-figure constructed from the collected lab data |
+:----:|:------:
+<img src="https://i.imgur.com/uhw7lNP.gif" alt="drawing" width="500"/> | <img src="deadlift_stickman_50fps.gif" alt="drawing" width="500"/>
